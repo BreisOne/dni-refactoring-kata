@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+App ---> DNI
+DNI ---> TablaAsignacion
+
+class App {
+    {static}+main(args:String[]):void
+}
+
+class DNI{
+    -dni:String
+    -{static}tabla:TablaAsignacion
+    --
+    +DNI()
+    +isDniNumero(String):boolean
+    +extraerParteNumericaDni():String
+    +checkNumeroDni():boolean
+    +extraerParteAlfabeticaDni():String
+    +obtenerLetra():String
+    +checkLetra():boolean
+    +checkDni():boolean
+}
+
+class TablaAsignacion{
+    -char[] tabla
+    --
+    +getLetra(int):char
+    +letraPermitida(char):boolean
+    +calcularLetra(String):char
+
+}
+
+@enduml
