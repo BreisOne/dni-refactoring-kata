@@ -10,13 +10,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 class TablaAsignacionTest {
-    private static TablaAsignacion tabla;
+    private static TablaAsignacion tabla = new TablaAsignacion();
     private static final char[] letrasNoPermitidas = {'I', 'Ñ', 'O', 'U'};
-
-    @BeforeClass
-    public static void crearTabla() {
-        tabla = new TablaAsignacion();
-    }
 
     @Test
     public void getLetraTablaAsignacion() {
@@ -24,9 +19,12 @@ class TablaAsignacionTest {
         assertEquals('E' , tabla.getLetra(22));
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test
     public void getLetraFueraLimitesTablaAsignacion() {
-        tabla.getLetra(100);
+        Exception thrown = Assertions.assertThrows(Exception.class, () -> {
+                tabla.getLetra(100);
+        });
+        Assertions.assertEquals("Posicion introducida fuera de los límites de la tabla", thrown.getMessage());
     }
 
     @Test
