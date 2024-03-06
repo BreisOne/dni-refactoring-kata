@@ -25,7 +25,7 @@ public class TablaAsignacion {
 
    public char calcularLetra(String parteNumericaDni){
        int dni = Integer.parseInt(parteNumericaDni);
-       int posicion = dni % 23;
+       int posicion = dni % letras.length;
        return getLetra(posicion);
    }
 

@@ -36,10 +36,10 @@ public class Dni {
         return true;
     }
     public char extraerParteAlfabeticaDni(){
-        return dni.charAt(8);
+        return dni.charAt(dni.length()-1);
     }
     public String extraerParteNumericaDni(){
-        return dni.substring(0,7);
+        return dni.substring(0,dni.length()-1);
     }
     public char obtenerLetra(){
         return tabla.calcularLetra(extraerParteNumericaDni());
